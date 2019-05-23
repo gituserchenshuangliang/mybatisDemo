@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.csl.demo.springmybaits.dao.Mapper;
+import com.csl.demo.springmybaits.entity.User;
 
 /**
  * @author Cherry
@@ -28,7 +29,7 @@ public class Learn extends AbstractJUnit4SpringContextTests {
 	private Mapper mapper;
 	
 	@Test
-	public void shows(){
+	public void showA(){
 		HashMap<String,Object> m = new HashMap<String,Object>();
 		m.put("username","chen");
 		m.put("price",6000);
@@ -39,5 +40,14 @@ public class Learn extends AbstractJUnit4SpringContextTests {
 		}
 		int count = mapper.queryViewForMap(m);
 		logger.debug(count+"");
+	}
+	
+	@Test
+	public void showB(){
+		ArrayList<User> list = mapper.getAllUserForEntity();
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getUsername());
+			System.out.println(list.get(i).getUpdateTime());
+		}
 	}
 }

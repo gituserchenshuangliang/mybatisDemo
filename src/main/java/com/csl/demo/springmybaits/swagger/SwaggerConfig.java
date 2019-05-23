@@ -10,7 +10,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
  /**
-  * http://localhost:8080/ymall/swagger/index.html#/
+  * http://localhost:8080/mybatisDemo/swagger/index.html#/
   * 常用注解： 
 			- @Api()用于类； 
 			表示标识这个类是swagger的资源 
@@ -42,7 +42,7 @@ public class SwaggerConfig{
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ymall.controller"))//扫描的包路径
+                .apis(RequestHandlerSelectors.basePackage("com.csl"))//扫描的包路径
                 .build();
     }
  

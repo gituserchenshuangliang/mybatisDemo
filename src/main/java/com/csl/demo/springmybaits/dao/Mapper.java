@@ -2,6 +2,8 @@ package com.csl.demo.springmybaits.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.csl.demo.springmybaits.entity.User;
 /**
  * Mapper接口
  * @author Cherry
@@ -12,6 +14,8 @@ public interface Mapper {
 	 * 一条数据使用一个map，取出的数据都放进list
 	 */
 	ArrayList<HashMap<String, Object>> getAllUser();
+	
+	ArrayList<User> getAllUserForEntity();
 	
 	/*
 	 * 从数据库视图中获取用户及用户订单信息

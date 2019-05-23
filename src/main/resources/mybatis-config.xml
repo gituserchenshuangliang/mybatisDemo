@@ -13,9 +13,12 @@
 		<setting name="logImpl" value="STDOUT_LOGGING" />
 	</settings>
 	<!-- 类型别名:意义仅在于用来减少类完全限定名的冗余 -->
-	<!-- <typeAliases>
-		<typeAlias alias="Author" type="com.entity" />
-	</typeAliases> -->
+	<typeAliases>
+		<!-- 单个实体类定义别名 -->
+		<!-- <typeAlias alias="user" type="com.csl.demo.springmybaits.entity.User" /> -->
+		<!-- 批量扫描实体类，默认别名 -->
+		<package name="com.csl.demo.springmybaits.entity"/>
+	</typeAliases>
 	
 	<!-- <environments default="development">
 		<environment id="development">
