@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.csl.demo.springmybaits.annotation.ShutMethod;
 import com.csl.demo.springmybaits.exception.MethodException;
@@ -20,7 +20,7 @@ import com.csl.demo.springmybaits.exception.MethodException;
  * @author Cherry
  * @date  2019年5月17日
  */
-public class ControllerInterceptor implements HandlerInterceptor {
+public class ControllerInterceptor extends HandlerInterceptorAdapter {
 	/*
 	 * 可在配置文件配置属性值
 	 */
@@ -29,12 +29,14 @@ public class ControllerInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		if (handler.getClass().isAssignableFrom(HandlerMethod.class)) {
 		ShutMethod sm = ((HandlerMethod) handler).getMethodAnnotation(ShutMethod.class);
 		if(sm != null){
 			boolean flag = sm.isShunt();
 			if(flag){
 				throw new MethodException("方法不可用！");
 			}
+		}
 		}
 		return true;
 	}

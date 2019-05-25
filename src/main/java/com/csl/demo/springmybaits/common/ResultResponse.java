@@ -1,7 +1,10 @@
 package com.csl.demo.springmybaits.common;
 
 import java.io.Serializable;
-
+/**
+ * @author Cherry
+ * @date  2019年5月24日
+ */
 public class ResultResponse<T> implements Serializable{
 	private static final long serialVersionUID = 4639677666628071866L;
 	private String msg;
