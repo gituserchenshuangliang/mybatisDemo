@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.csl.demo.springmybaits.annotation.ShutMethod;
 import com.csl.demo.springmybaits.entity.User;
 import com.csl.demo.springmybaits.service.MapperService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @author Cherry
@@ -18,6 +22,7 @@ import com.csl.demo.springmybaits.service.MapperService;
  */
 @RestController
 @RequestMapping("/mapper")
+@Api(tags="MapperController测试接口")
 public class MapperController {
 	@Autowired
 	private MapperService mapperService;
@@ -27,6 +32,7 @@ public class MapperController {
 	 */
 	@RequestMapping(value="/getAllUser",method=RequestMethod.POST)
 	@ShutMethod(isShunt=true)
+	@ApiOperation(value = "获取所以用户")
 	public ArrayList<HashMap<String, Object>> getAllUser(){
 		return mapperService.getAllUser();
 	}
@@ -47,9 +53,14 @@ public class MapperController {
 	
 	/*
 	 * map作为查询参数,查询试图(map中的key值有：username,price)
+	 * {'username':'chen','price':'4000'}
 	 */
 	@RequestMapping(value="/queryViewForMap",method=RequestMethod.POST)
-	public int queryViewForMap(HashMap<String, Object> map){
+	public int queryViewForMap(String maps){
+		JSONObject mapa = JSONObject.parseObject(maps);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("username", mapa.getString("username"));
+		map.put("price", mapa.getInteger("price"));
 		return mapperService.queryViewForMap(map);
 	}
 }

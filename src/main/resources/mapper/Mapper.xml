@@ -14,7 +14,7 @@
 		from ymall_user
 	</select>
 
-	<select id="getAllUserForEntity" resultType="User">
+	<select id="getAllUserForEntity" resultType="user">
 		select
 		id id,
 		username
