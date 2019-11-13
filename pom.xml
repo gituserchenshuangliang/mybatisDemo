@@ -10,7 +10,7 @@
 	<properties>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<org.springframework.version>4.3.7.RELEASE</org.springframework.version>
-		<jack.version>2.8.7</jack.version>
+		<jack.version>2.10.1</jack.version>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 		<org.mybatis.version>3.4.1</org.mybatis.version>
 		<org.mybatis.spring.version>1.3.0</org.mybatis.spring.version>
